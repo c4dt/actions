@@ -1,12 +1,11 @@
-name: compile-sphinx
+name: make-master
 
 on:
   push:
     branches:
       - master
-  pull-requests:
-    branches:
-      - master
+  schedule:
+    - cron: '20 13 * * *'
 
 jobs:
   build:
@@ -16,4 +15,6 @@ jobs:
         with:
           fetch-depth: 1
       - name: Run Makefile
-        run: echo "Done"
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: make all
