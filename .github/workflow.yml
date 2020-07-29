@@ -1,0 +1,19 @@
+name: compile-sphinx
+
+on:
+  push:
+    branches:
+      - master
+  pull-requests:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Run Makefile
+        run: echo "Done"
